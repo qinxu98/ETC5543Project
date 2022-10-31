@@ -1,0 +1,23 @@
+---
+title: "MAE - Epidemiological report"
+author:
+- name: Modelling and Analytical Epidemiology^[Department of Health, modellinganalytics@dhhsvicgovau.onmicrosoft.com]
+date: "Last refreshed `r format(lubridate::now(tzone='Australia/Melbourne'), '%d %B, %Y')`"
+output:
+  html_document:
+  dh-navbar: no
+---
+
+```{r setup, include=FALSE, warning=FALSE, comment=FALSE, message=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning=FALSE, message=FALSE) 
+# , fig.width=10, fig.height=(2/3)*10
+```
+
+```{r source_packages, include = FALSE}
+source('packages.R')
+```
+
+```{r source_functions, include = FALSE}
+file.sources = list.files(path = "./functions/output", pattern="*.R")
+sapply(paste0('./functions/output/',file.sources),source,.GlobalEnv)
+```
