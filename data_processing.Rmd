@@ -1,0 +1,22 @@
+---
+output: html_document
+resource_files:
+- functions/trevi_case_hosp_age_sex_read.R
+- functions/trevi_hosp_linelist_read.R
+- functions/packages.R
+---
+
+```{r setup, include=FALSE, warning=FALSE, comment=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning=FALSE, message=FALSE) 
+# , fig.width=10, fig.height=(2/3)*10
+```
+
+```{r source_packages}
+source('packages.R')
+```
+
+```{r source_functions}
+file.sources = list.files(path = "./functions/input", pattern="*.R")
+sapply(paste0('./functions/input/',file.sources),source,.GlobalEnv)
+```
+
