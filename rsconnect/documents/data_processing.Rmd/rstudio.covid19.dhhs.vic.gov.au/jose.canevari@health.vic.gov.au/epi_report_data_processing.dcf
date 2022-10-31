@@ -1,0 +1,14 @@
+name: epi_report_data_processing
+title: epi_report_data_processing
+username: jose.canevari@health.vic.gov.au
+account: jose.canevari@health.vic.gov.au
+server: rstudio.covid19.dhhs.vic.gov.au
+hostUrl: https://rstudio.covid19.dhhs.vic.gov.au/__api__
+appId: 1652
+bundleId: 55736
+url: https://rstudio.covid19.dhhs.vic.gov.au/content/78cc0359-03bb-4fe5-9f45-338baeba26c2/
+when: 1665119276.43043
+lastSyncTime: 1665119276.43043
+asMultiple: FALSE
+asStatic: FALSE
+additionalFiles: functions/trevi_case_hosp_age_sex_read.R|functions/trevi_hosp_linelist_read.R
