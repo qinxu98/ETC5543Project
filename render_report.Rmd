@@ -31,3 +31,16 @@ cases_over_time_graph(x) # calculate the daily cases and the avg of cases base o
 case_Table() # Returns the most updated summary table for cases this week, last week and YTD for different age groups.
 ```
 
+```{r Hosp_plot}
+Hosp_plot() 
+```
+
+```{r Hosp_cases_table}
+Hosp_Cases_table 
+```
+
+
+
+
+
+
