@@ -22,5 +22,5 @@ sapply(paste0('./functions/input/',file.sources),source,.GlobalEnv)
 
 ```{r epicaselinelist}
 pin_write(pins::board_register_rsconnect(), cases_linelist_read(), "epicases_linelist_read")
-
 ```
+

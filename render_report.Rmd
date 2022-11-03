@@ -21,3 +21,13 @@ source('packages.R')
 file.sources = list.files(path = "./functions/output", pattern="*.R")
 sapply(paste0('./functions/output/',file.sources),source,.GlobalEnv)
 ```
+
+```{r cases_over_time}
+x = 7
+cases_over_time_graph(x) # calculate the daily cases and the avg of cases base on rolling window of desires time frame. In this instance, it calculates the daily cases and weekly avg of cases. 
+```
+
+```{r case_Table}
+case_Table() # Returns the most updated summary table for cases this week, last week and YTD for different age groups.
+```
+
