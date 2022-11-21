@@ -3,9 +3,16 @@ title: "MAE - Epidemiological report"
 author:
 - name: Modelling and Analytical Epidemiology^[Department of Health, modellinganalytics@dhhsvicgovau.onmicrosoft.com]
 date: "Last refreshed `r format(lubridate::now(tzone='Australia/Melbourne'), '%d %B, %Y')`"
-output:
-  html_document:
-  dh-navbar: no
+output: 
+  html_document: 
+    template: vicdh/vicdh.html
+    css: vicdh/vicdh.css
+    code_folding: hide
+    highlight: espresso
+    fig_width: 8.64
+resource_files:
+  - ./PPT/epiTemplate.pptx
+  - ./vicdh
 ---
 
 ```{r setup, include=FALSE, warning=FALSE, comment=FALSE, message=FALSE}
@@ -22,25 +29,86 @@ file.sources = list.files(path = "./functions/output", pattern="*.R")
 sapply(paste0('./functions/output/',file.sources),source,.GlobalEnv)
 ```
 
-```{r cases_over_time}
-x = 7
-cases_over_time_graph(x) # calculate the daily cases and the avg of cases base on rolling window of desires time frame. In this instance, it calculates the daily cases and weekly avg of cases. 
+```{r study_period}
+tstart = dmy('01/02/2022')
+tend = today()
 ```
 
-```{r case_Table}
-case_Table() # Returns the most updated summary table for cases this week, last week and YTD for different age groups.
+```{r trevi_hosp_over_time}
+trevi_hosp_time_graph(tstart,tend)
+```
+
+```{r trevi_hosp_mortality_time}
+trevi_hosp_mortality_graph(tstart,tend)
+```
+
+```{r trevi_hosp_age_time}
+trevi_hosp_age_time_graph(tstart, tend)
+```
+
+```{r trevi_hosp_mortality}
+trevi_hosp_mortality_graph(tstart, tend)
+```
+
+```{r cases_over_time}
+trevi_cases_time_graph() # plot daily cases and rolling avg
+```
+
+```{r case_table}
+trevi_case_table() # Returns the most updated summary table for cases this week, last week and YTD for different age groups.
 ```
 
 ```{r Hosp_plot}
-Hosp_plot() 
+Hosp_plot()
 ```
 
 ```{r Hosp_cases_table}
-Hosp_Cases_table 
+Hosp_cases_table()# returns daily avg hospitalization cases between different age group for last week and this week as well as the percentage increases. 
+```
+
+```{r Edplot}
+ED_plot()
+```
+
+```{r ed_cases_read}
+ED_Table_Age()
+```
+
+```{r ed_table_tricat}
+ED_Table_tricat()
+```
+
+```{r Death_cases_plot}
+Death_cases_plot()
+```
+
+```{r Death_table}
+Death_table()
+```
+
+```{r children_plot_1}
+children_plot("ChildCasePropPlot", 7,0)
+```
+
+```{r children_plot_2}
+children_plot("ChildCaseRatePlot", 7,0)
+```
+
+```{r children_plot_3}
+children_plot("ChildCaseRateFromT3Plot", 7,0)
+```
+
+```{r children_table}
+children_table()1k
 ```
 
 
+```{r Vax_plot}
+Vax_plot()
+```
 
-
+```{r Vax_table}
+Vax_table()
+```
 
 
