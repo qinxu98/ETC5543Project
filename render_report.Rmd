@@ -102,7 +102,6 @@ children_plot("ChildCaseRateFromT3Plot", 7,0)
 children_table()1k
 ```
 
-
 ```{r Vax_plot}
 Vax_plot()
 ```

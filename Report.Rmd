@@ -8,9 +8,7 @@ output:
     toc_float: true
 ---
  <style>
-body{
-text-align: justify
-}
+body{text-align: justify}
 </style>
 
 ```{r setup, include=FALSE}
@@ -73,7 +71,7 @@ Hence, in order to continue to use the review, the current review must be optimi
 
 # Objectives 
 
-The aim of this internship is essentially to reproduce the original review prepared by "Ellie Robinson (intially by Craig Savagewith) with the objective to optimise the report in 2 ways:
+The aim of this internship is essentially to reproduce the original review prepared by Ellie Robinson (intially by Craig Savagewith) with the objective to optimise the report in 2 ways:
 
 - Increase the rendering speed of the report.
 - Increase efficiency of the Rmarkdown.
@@ -108,6 +106,7 @@ This not only enables users to continue to utilise the review as a tool for exam
 # Methodology
 
 ## Methodology 
+
 In order to the optimise the review a new workflow was designed and constructed. 
 In this section, we will disucss the the new workflow that was used to achieve the optimisation of the weekly COIVD-19 Epi review:
 
@@ -203,8 +202,17 @@ In this section, we will explore the output functions that are created in each s
 **Postive Covid-19**: 
 
 Following the new workflow structure and  pins created,  for this section of the covid-19 review , output function *trevi_cases_time_graph()* and *trevi_case_table()* are created with some modification on the original code (by Ellie Robinson (intially by Craig Savagewith)) to adopt the new pin. 
+
+
+```{r  casetable, fig.cap ="The output of trevi_case_table() function "}
+knitr::include_graphics(here::here("pics/trevi_case_table().png"))
+```
+
 *The trevi_case_table()* function returns a summary table of the positive cases within Victoria. 
 
+```{r caseplot, fig.cap ="The output of trevi_cases_time_graph() function "}
+knitr::include_graphics(here::here("pics/trevi_cases_time_graph().png"))
+```
 *The trevi_cases_time_graph()* returns a plot where it visualises the daily covid-19 cases reported to the Department of Health, and produces a line plot that shows rolling average of the positive cases for the last 7 days. 
 
 The output function *trevi_cases_time_graph()* also allows users to change the rolling average of the positive cases for the days they intend by taking in the rolling average parameters as input for the function.  
@@ -213,7 +221,16 @@ The output function *trevi_cases_time_graph()* also allows users to change the r
 
 Following the modular workflow structure and the new pins created for the section of the covid-19 Hospitalisation cases, output functions *Hosp_cases_table()* and *Hosp_plot()* are created.
 
+```{r hosptable, fig.cap ="The output of Hosp_cases_table() function "}
+knitr::include_graphics(here::here("pics/Hosp_cases_table().png"))
+```
+
+
 The *Hosp_cases_table()*  function returns a summary table of the all the covid-19 hospitalisation cases within Victoria for different age group from 2022 onwards and present the the daily averge of hospitlisation cases in victoria in this week and last week and shows the percentage increase.
+
+```{r Hospplot, fig.cap =" The output of Hosp_plot() function "}
+knitr::include_graphics(here::here("pics/Hosp_plot().png"))
+```
 
 The *Hosp_plot()* function returns a plot where it visualises the total daily covid-19 hospitalisation cases reported to the Department of Health, in combination of a line plot that shows rolling average of the positive cases for the last 7 days. The output function *Hosp_plot()* also allows users to change the rolling average of the hospitalisation cases any period of time by taking in the rolling average  parameters as input for the function.  
 
@@ -221,27 +238,65 @@ The *Hosp_plot()* function returns a plot where it visualises the total daily co
 
 Following the new workflow structure and pins created for the section of the covid-19 emergency department hospitalisation cases, output functions *ED_Age_Table()*, *ED_Table_tricat()* and *ED_Plot()* are created.
 
+```{r EDAgeTable, fig.cap ="The output of ED_Age_Table() function"}
+knitr::include_graphics(here::here("pics/ED_Age_Table().png"))
+```
 *ED_Age_Table()* function return a summary table for all the cases of Emergency department for all different age groups in Victoria. 
 
+```{r EdTabletricat, fig.cap ="The output of Ed_Table_tricat() function"}
+knitr::include_graphics(here::here("pics/Ed_Table_tricat().png"))
+```
+
 *Ed_Table_tricat()* function returns a summary table of all the emergency department hospitalisation cases according to triage category. 
+
+```{r EDPlot, fig.cap ="The output of ED_Plot() function"}
+knitr::include_graphics(here::here("pics/Ed_Plot().png"))
+```
 
 Lastly, *ED_Plot()* function produce a plot that allows the emergency department cases to be visualised, again the function allows users to change the rolling average of the emergency department hospitalisation cases any period of time by taking in the rolling average parameters as input for the function.  
 
 **COVID-19 Death Cases** : 
 
-For this section two output functions *Death_table ()* and *Death_cases_plot()* were created 
 
+For this section two output functions *Death_table()* and *Death_cases_plot()* were created 
+
+```{r Deathtable, fig.cap ="The output of Death_table() function"}
+knitr::include_graphics(here::here("pics/Death_table().png"))
+```
 The *Death_table()* produces a summary table that display the death cases for the different age group within Victoria for the last 2 week and last week and as well and the percent increase.  
 
+```{r Deathplot, fig.cap ="The output of Death_cases_plot() function"}
+knitr::include_graphics(here::here("pics/Death_cases_plot().png"))
+```
 The *Death_cases_plot()* produces a plot that examines and compares the trend of Death, positive cases, and case fatality rate. 
 
 **COVID-19 Cases in children**:
 For this section two output functions *children_table()* and *children_plot()*
  were created.
+ 
+```{r childrentable, fig.cap ="The output of children_table() function"}
+knitr::include_graphics(here::here("pics/children_table().png"))
+```
 The *children_table()* function produces summary table of the covid-19 cases among children in Victoria, and consist of information regarding the total covid-19 for different child age group from January 1st 2022 onwards, covid-19 cases within this week, and last week, the percentage increases , thisWeekCaseper100k and ytdPer100k.
 
-The *children_plot ()* function allow users to return three different plots. The first plot is proportion of cases in child age group as a daily proportion of total reported cases. It also shows the 7 days average proportion for different age groups. 
+
+The *children_plot()* function allow users to return three different plots. 
+
+```{r plot1, fig.cap ="The output of children_plot() function"}
+knitr::include_graphics(here::here("pics/plot1.png"))
+```
+
+The first plot is proportion of cases in child age group as a daily proportion of total reported cases. It also shows the 7 days average proportion for different age groups. 
+
+```{r plot2, fig.cap ="The output of children_plot() function"}
+knitr::include_graphics(here::here("pics/plot2.png"))
+```
+
 The second plot is the daily case rate(per 100,000 population) by child age group from January 1st 2022 onwards.
+
+```{r plot3, fig.cap ="The output of children_plot() function"}
+knitr::include_graphics(here::here("pics/plot3.png"))
+```
 
 The last plot is same as second plot, however only containing case diagnosed from term 3 (25th of June 2022)onwards. 
 
@@ -250,7 +305,14 @@ The function takes 3 arguments plotname, daysbefore and daysafter. The first arg
 **Vaccination**:
 In this section, two output functions were produced *Vax_plot()* and *Vax_Table()*.
 
+```{r vaxtable, fig.cap ="The output of Vax_Table() function"}
+knitr::include_graphics(here::here("pics/Vax_Table().png"))
+```
 The *Vax_Table()* function returns a summary table of vaccination coverage rate for different doses of vaccination for different age group in Victoria, as well as showing the percentage increase for the vaccination rate in the last 30 days. 
+
+```{r vaxplot, fig.cap ="The output of Vax_plot() function"}
+knitr::include_graphics(here::here("pics/Vax_plot().png"))
+```
 
 The *Vax_plot()* function produces a plot that visualises the vaccination coverage by dose number and age group. 
 
@@ -298,7 +360,7 @@ Lastly, the primary task was to optimise the rendering speed of the  original re
 
 # Conclusion:
 
-To conclude, the result shows that owith the new work structure,it renders the COVID-19 review at a much faster speed (about 10 time faster) when compared to the original work structure. This is mainly due to the following 3 reasons:
+To conclude, the result shows that with the new work structure,it renders the COVID-19 review at a much faster speed (about 10 time faster) when compared to the original work structure. This is mainly due to the following 3 reasons:
 
 1.	Change in workflow and work structure.
 2.	Creating Pins targeted for each section for the review . 
@@ -307,11 +369,11 @@ To conclude, the result shows that owith the new work structure,it renders the C
  The result has illustrated that with  the new modularised workflow and work restructure , COVID-19 review can be refactored in such a way that the efficiency of the internal structure and rendering speed of the report is improved while keeping the original content of the review intact. 
  
 ## Caveats:
-The fast rendering speed of the report could also be due to the fact that the current Covid-19 Epi Review using the modoularised workflow consists of less sections than the orignal review. (Due to time contrain, only section Covid-19 positive cases , hospitalisation cases, emergency department cases , death cases, covid-19 in children and vaccination are done)
+The fast rendering speed of the report could also be due to the fact that the current Covid-19 Epi Review using the modularised workflow consists of less sections than the orignal review. (Due to time contrain, only section Covid-19 positive cases , hospitalisation cases, emergency department cases , death cases, covid-19 in children and vaccination are done)
 
 
 ## Limitations:
-Some limitation to the new modularised approach is that, despite it is able to render the final review at a much faster speed, the modular approach of the review requires more effort from users to learn and udnerstadn the workflow when adding new sections to the COVID-19 Epi Review.
+Some limitation to the new modularised approach is that, despite it is able to render the final review at a much faster speed, the modular approach of the review requires more effort from users to learn and understand the workflow when adding new sections to the COVID-19 Epi Review.
 
 ## Challenges
 
@@ -327,14 +389,41 @@ Hence , to complete the project, these section must be compeleted inorder to mea
 
 # References:
 
-Australian Government Department of Health. (2020, January 25). First confirmed case of novel coronavirus in Australia. Australian Government Department of Health. https://www.health.gov.au/ministers/the-hon-greg-hunt-mp/media/first-confirmed-case-of-novel-coronavirus-in-australia
+  Achim Zeileis and Gabor Grothendieck (2005). zoo: S3 Infrastructure for Regular and
+  Irregular Time Series. Journal of Statistical Software, 14(6), 1-27.
+  doi:10.18637/jss.v014.i06
+
+  Australian Government Department of Health. (2020, January 25). First confirmed case of novel coronavirus in Australia. Australian Government Department of Health. https://www.health.gov.au/ministers/the-hon-greg-hunt-mp/media/first-confirmed-case-of-novel-coronavirus-in-australia
+
+  Garrett Grolemund, Hadley Wickham (2011). Dates and Times Made Easy with lubridate. Journal
+  of Statistical Software, 40(3), 1-25. URL https://www.jstatsoft.org/v40/i03/.
+  
+  H. Wickham. ggplot2: Elegant Graphics for Data Analysis. Springer-Verlag New York, 2016.
+
+  Lotfi, M., Hamblin, M. R., & Rezaei, N. (2020). COVID-19: Transmission, prevention, and potential therapeutic opportunities. Clinica chimica acta, 508, 254-266
+
+  Silge J, Wickham H, Luraschi J (2022). _pins: Pin, Discover and Share Resources_. R package
+  version 1.0.3, <https://CRAN.R-project.org/package=pins>.
+  
+   Stevenson M, Nunes ESwcfT, Heuer C, Marshall J, Sanchez J, Thornton R, Reiczigel J,
+  Robison-Cox J, Sebastiani P, Solymos P, Yoshida K, Jones G, Pirikahu S, Firestone S, Kyle
+  R, Popp J, Jay M, Reynard C, Cheung A, Singanallur N, Szabo A, Rabiee. A (2022). _epiR:
+  Tools for the Analysis of Epidemiological Data_. R package version 2.0.52,
+  <https://CRAN.R-project.org/package=epiR>.
+
+   Thoen E (2021). _padr: Quickly Get Datetime Data Ready for Analysis_. R package version
+  0.6.0, <https://CRAN.R-project.org/package=padr>.
+
+  Ushey K (2018). _RcppRoll: Efficient Rolling / Windowed Operations_. R package version
+  0.3.0, <https://CRAN.R-project.org/package=RcppRoll>.
+
+  Victorian COVID-19 data | Coronavirus Victoria. (2021). Vic.gov.au. https://www.coronavirus.vic.gov.au/victorian-coronavirus-covid-19-data
+
+  Wickham et al., (2019). Welcome to the tidyverse. Journal of Open Source Software, 4(43),
+  1686, https://doi.org/10.21105/joss.01686
 
 
-Lotfi, M., Hamblin, M. R., & Rezaei, N. (2020). COVID-19: Transmission, prevention, and potential therapeutic opportunities. Clinica chimica acta, 508, 254-266
-
-Victorian COVID-19 data | Coronavirus Victoria. (2021). Vic.gov.au. https://www.coronavirus.vic.gov.au/victorian-coronavirus-covid-19-data
-
-World Health Organization. (2022). WHO COVID-19 dashboard. World Health Organization. https://covid19.who.int/
+  World Health Organization. (2022). WHO COVID-19 dashboard. World Health Organization. https://covid19.who.int/
 
 Zhu, H., Wei, L., & Niu, P. (2020). The novel coronavirus outbreak in Wuhan, China. Global health research and policy, 5(1), 1-3.
 
