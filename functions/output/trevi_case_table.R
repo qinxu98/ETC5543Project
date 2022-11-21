@@ -1,7 +1,9 @@
 # Case table function 
 
-case_Table <- function() {
+trevi_case_table <- function() {
+  
   # format function
+  
   formatFT <- function( inputFlextable ){
     outputFlextable <- inputFlextable %>%
       theme_zebra( odd_body='grey95' ) %>%
@@ -15,13 +17,13 @@ case_Table <- function() {
   
   set_flextable_defaults( digits=2 )
   
-  # constants
+  # connect to the board
+  board <- pins::board_register_rsconnect()
+  
+  #agelevels
   ageLevels <- factor( c('0-18', '19-39', '40-64', '65+'), ordered=TRUE )
   
   nAgeGroup <- length( levels( ageLevels ) )
-  
-  # connect to the board
-  board <- pins::board_register_rsconnect()
   
   # popAgeData
   popData2020 <- pin_read( board=board
@@ -37,29 +39,49 @@ case_Table <- function() {
     group_by( AgeGroup ) %>%
     summarise( Pop=sum( population ))
   
+  
   # read in case 
   df <- pin_read(board,"qin.xu@health.vic.gov.au/epicases_linelist_read")
-  df<- df %>% mutate(YTD = as.logical(YTD),
-                     Thisweek = as.logical(Thisweek),
-                     Lastweek = as.logical(Lastweek))
+  
+  df<- df %>%
+    mutate( ytd =DiagnosisDate >= ymd( 20220101 )
+            , thisWeek=between( DiagnosisDate
+                                , today(tzone="Australia/Melbourne")-days(7)
+                                , today(tzone="Australia/Melbourne") - days(1) )
+            , lastWeek=between( DiagnosisDate
+                                , today(tzone="Australia/Melbourne")-days(14)
+                                , today(tzone="Australia/Melbourne")-days(8) ))
   
   case_table<- df %>%
     group_by(AgeGroup) %>%
-    summarise( YTD  = sum( YTD )
-               , Thisweek =sum( Thisweek),
-               Lastweek = sum( Lastweek)) %>%
+    summarise( ytd  = sum( n_case))
+  
+  case_table_thisweek<- df %>% 
+    filter(thisWeek =="TRUE") %>%
+    group_by(AgeGroup) %>%
+    summarise(thisweek = sum( n_case)) 
+  
+  case_table_lastweek <- df %>%
+    filter(lastWeek == "TRUE") %>%
+    group_by(AgeGroup) %>%
+    summarise( lastweek = sum(n_case))
+  
+  case_table<- case_table %>%
+    left_join(case_table_thisweek, by = 'AgeGroup') %>%
+    left_join(case_table_lastweek, by = 'AgeGroup')  %>% 
+    drop_na() %>%
     inner_join( popAgeData, by='AgeGroup' ) %>%
     adorn_totals() %>%
-    mutate(percentIncrease =((Thisweek -  Lastweek)/ Lastweek) %>%
+    mutate(percentIncrease =((thisweek -  lastweek)/ lastweek) %>%
              percent( accuracy=0.1)
-           , ThisWeekPer100k=round(Thisweek /(Pop/100e3),1)
-           , ytdPer100k=round(YTD/(Pop/100e3),0)) 
+           , ThisWeekPer100k=round(thisweek /(Pop/100e3),1)
+           , ytdPer100k=round(ytd/(Pop/100e3),0)) 
   
   case_table <- case_table %>% 
     select(c(AgeGroup,
-             YTD,
-             Thisweek,
-             Lastweek,
+             ytd,
+             thisweek,
+             lastweek,
              percentIncrease, 
              ThisWeekPer100k, 
              ytdPer100k))
@@ -72,4 +94,4 @@ case_Table <- function() {
   
 }
 
-case_Table() # time running 7secs
+
