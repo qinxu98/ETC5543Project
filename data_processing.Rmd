@@ -20,10 +20,41 @@ file.sources = list.files(path = "./functions/input", pattern="*.R")
 sapply(paste0('./functions/input/',file.sources),source,.GlobalEnv)
 ```
 
-```{r epicaselinelist}
+```{r trevi_hosp_linelist}
+pin_write(pins::board_register_rsconnect(), trevi_hosp_linelist_read(), "trevi_hosp_linelist")
+```
+
+```{r trevi_case_hosp_age_sex}
+pin_write(pins::board_register_rsconnect(), trevi_case_hosp_age_sex_read(), "epitrevi_case_hosp_age_sex")
+```
+
+```{r epirep_pcr_results}
+pin_write(pins::board_register_rsconnect(), pcr_tests_read(), "epirep_pcr_results")
+```
+
+```{r epicases_linelist_read}
 pin_write(pins::board_register_rsconnect(), cases_linelist_read(), "epicases_linelist_read")
+
 ```
 
 ```{r epied_cases_read}
 pin_write(pins::board_register_rsconnect(), ed_cases_read(), "epied_cases_read")
 ```
+
+```{r epideath_case_read}
+pin_write(pins::board_register_rsconnect(), death_cases_read(), "epideath_case_read")
+```
+
+```{r epicase_fatality_read}
+pin_write(pins::board_register_rsconnect(), case_fatality_read(), "epicase_fatality_read")
+
+```
+
+```{r epi_vax_data_read}
+pin_write(pins::board_register_rsconnect(), vax_data_read(), "epi_vax_data_read")
+```
+
+```{r epi_vax_eligibility_read}
+pin_write(pins::board_register_rsconnect(),vax_eligibility_read(), "epi_vax_eligibility_read")
+```
+
