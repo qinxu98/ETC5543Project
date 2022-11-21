@@ -24,3 +24,6 @@ sapply(paste0('./functions/input/',file.sources),source,.GlobalEnv)
 pin_write(pins::board_register_rsconnect(), cases_linelist_read(), "epicases_linelist_read")
 ```
 
+```{r epied_cases_read}
+pin_write(pins::board_register_rsconnect(), ed_cases_read(), "epied_cases_read")
+```
