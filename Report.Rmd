@@ -117,7 +117,7 @@ In order to optimise the current review but still keeping its current content in
 
   - **Data processing RMarkdown**: The first r markdown file is named data. processing. This r markdown is responsible to make  the pins created in the input folders as pins and share it on RSconnect server. A schedule update will also be set for the r markdown on RSconnect, this ensures that the downstream data analysis is always referring to the most updated data. 
 
-  - **Function output  folder** : Th output function folder contains multiple r scripts where each of the r scripts is creating a function that takes in pins and does data wrangling and also produce an output that can be called within the presentation in the final RMarkdown file. 
+  - **Function folder output** : Th output function folder contains multiple r scripts where each of the r scripts is creating a function that takes in pins and does data wrangling and also produce an output that can be called within the presentation in the final RMarkdown file. 
 
   - **Render.RMardown**: This is the file all the functions that were previously stored within the output function folder are now called within the markdown to present the output.
 
@@ -335,7 +335,7 @@ This function returns the execution time for any R expression, code, and functio
 Second, in order to test to see whether the new workflow allows for faster rendering speed of the overview, each time when a section of the COVID-19 review is completed using the new workflow, the rendering speed of the review is recorded and compared to the original COVID-19 review. 
 
 
-### New skills learn from the work
+### New skills 
 The primary objective of the internship was to optimise the original review through the use of the pins and restructuring of the of the repository and the modularised workflow . 
 In order to successfully complete the project and adopt the review into the modularised workflow there are many things that  are required to be learnt while completing the project. 
 
