@@ -1,0 +1,341 @@
+---
+title: "ETC5543 Report - The Optimisation of COVID-19 EPI Review  "
+author: "Qin Xu, Student ID: 32343612 , Supercvisor: Jose Canevar and Dennis Wollerheim  "
+date: "2022-10-27"
+output:
+  bookdown::html_document2:
+    toc: true
+    toc_float: true
+---
+ <style>
+body{
+text-align: justify
+}
+</style>
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+# Abstract 
+
+The internship was completed with the Victoria Department of Health under the supervision of Jose Canevar and Dennis Wollerheim. 
+
+This internship aims to help design a novel workflow and refactor the structure of the current COVID-19 Epi Review (produced by Ellie Robinson, initially by Craige Savage)  to achieve optimisation in the efficiency of the R markdown that produces the review and rendering speed of the review 
+
+Data used for the project includes data collected by the Victorian Department of Health, stored within their SQL database and pins that are created by other members within the Victorian Department of Health.  The present report, explores and examines the deliverables of my work on the project optimisation of the COVID-19 EPI Review. 
+
+Through out the internship when attempting to optimise COVID-19 Epi Report , there were many challenges and drawbacks. However after the internship, i have gain important skills that will help me when tackling similar optimisation problem in the future.
+
+
+
+# Background and Motivation 
+
+In December 2019, a novel corona virus disease  first broke out in Wuhan Hubei Province, Central  China (Zhu et al., 2020) and has since then been rapidly spread around the globe,  leading to an unprecedented global pandemic , posing devastating impact on global public health system and economic development. 
+This novel infectious disease  known as COVID-19  is caused by a severe acute respiratory syndrome coronavirus 2 (SARs-Cov2) previously known as (2019-nCov) in 2019.  
+
+Current studies have shown that the virus that cause the infectious disease can be  spread and transmitted among public in multiple ways. However,  Lotfi et al. (2020) has suggest the virus is mainly spread  through person to person in close contact. The virus is spread through the respiratory droplet released when an infected individual talks, sneezes or coughs,  The droplet can then land in other close contact’s eye, mouth or nose and thereby also becomes infected with the virus. 
+Studies have shown individuals with the infectious disease are likely to experience mild to moderate respiratory illness symptoms  that are similar to other common illness such as sore throat, fever, and coughing and can be healed without any special treatment . However, for minority such as the elderly and individuals with a history of chronic diseases such as diabetes and cystic fibrosis, it was revealed that these groups are at a higher risk to  develop a more severe symptom such as severe shortness of breath and chest pain. 
+
+Since the outbreak, COVID-19 has continued its rampage around the world with multiple mutations and has now spread to 228 Countries and Territories around the globe. According to World Health Organisation (2022), by November 2022, there are  over 600 million cumulative cases and 6 million deaths caused by COVID-19. 
+
+In Victoria  Australia, the first case of  COVID-19 was confirmed in early 2022,  when a man from Wuhan, flew to Melbourne from Guangdong China on the 19th of January  (Australian Government Department of Health, 2020). Since then, according to Victorian COVID-19 data | Coronavirus Victoria. (2021), there have been over  2 million cumulative COVID-19 cases and over 5000 deaths in Victoria.
+
+To contain and slow down the spread of the virus within Victoria, Victorian government deployed the use of temporary lockdown as well as mandatory vaccination rollout in February 2021 with the intention to reduce COVID-19 cases within state. 
+
+In order to examine the latestCOVID-19 impact in Victoria and see the effect of the vaccination, a covid-19 review report was originally produced and used by a group of epidemiologists to study the infectious disease and analyse it impact during the outset of the virus outbreak in Victoria. 
+
+The review provides an overview of  COVID-19  cases in Victoria, highlights key data , recent trends and pertinent epidemiological information concerning the COVID-19 pandemic such as vaccination roll out. The review is continuously updated as epidemiologists use the review every week to analyse and examine  the latest  spread of covid-19 in Victoria,
+
+The following sections are the current sections that are included within the review:
+
+- Positive Cases
+-	Hospitalisation Cases, 
+-	Emergency department Cases  
+-	Death Cases
+-	Children 
+-	Vaccination Status 
+-	Rural Areas
+-	Indigenous group 
+-	SEIFA 
+-	Prisoners.
+
+
+As the report in continuously updated with new sections over the last two years, the file has gradually become significantly big, resulting in some concerns such as slow rendering speed of the review, difficult to make amendment to the review. 
+
+
+
+# Motivation
+
+Hence, in order to continue to use the review, the current review must be optimised  as it is an essential tool that is used to study  COVID-19 cases in Victoria and to  provide crucial insights that helps the Victorian government to effectively managed the COVID-19 pandemic  and future pandemics. 
+
+
+
+# Objectives 
+
+The aim of this internship is essentially to reproduce the original review prepared by "Ellie Robinson (intially by Craig Savagewith) with the objective to optimise the report in 2 ways:
+
+- Increase the rendering speed of the report.
+- Increase efficiency of the Rmarkdown.
+
+In order to achieve the objectives , 4 approaches have been adopted to tackle the concerns: 
+
+1.	Refactoring of the internal structure of the repository .
+
+2.	Design and construct a new workflow for the review .
+
+3.	Create pins for the dataset used within the review .
+
+4.	Create functions to reduce lines of code in the final r markdown. 
+
+COVID-19 data used for the current project are stored in within databased of The Victorian Department of Health. The data are access by the following ways :
+
+-	Read CVS from the Virtual Machine ( As the internship was done with The Victorian Department of Health, the use of Virtual machine was mandatory to access the data)
+
+- Reading data directly from the database 
+
+- Reading data stored in pins that was previously created by other individuals or team member on RStudio/ RS connect .
+
+The original covid-19 review uses multiple datasets from the database the ‘CDL’(Common Data Layer) , and pins that were previously created by other individuals within The Victorian Department of Health. 
+As the COVID-19 Pandemic continues within Victoria, the database, and pins automictically updates every day with the latest data to ensure the downstream analysis conducted  is referring to the most current data. 
+
+Since the objective of this internship is to reproduce the original Covid-19 Review , many of the pins  and data used from the database is reused within the internship with some mortifications to adapt to the different workflow and new repository structure that have been implemented to optimise the efficiency and rendering of the review. 
+
+As the review is an important tool that is used by the epidemiologists within the department of the health to track the  COVID-19 cases in Victoria and generated covid-19 insights . By improving the efficiency of the review, its functionalities and optimising its rendering speed.
+This not only enables users to continue to utilise the review as a tool for examination and exploration of COVID-19 in Victoria ,helping the Victorian government to implement new public health orders that manages the COVID-19 virus within the interest of the public, but also allows amendment and new section to be added to the review easier. 
+
+
+# Methodology
+
+## Methodology 
+In order to the optimise the review a new workflow was designed and constructed. 
+In this section, we will disucss the the new workflow that was used to achieve the optimisation of the weekly COIVD-19 Epi review:
+
+**Refactoring of the internal structure of the repository** : 
+In order to optimise the current review but still keeping its current content intact , refactoring of the internal structure of the repository was implemented. This included creating 2 new separated r markdown files and a function folder that included two folders ( input and output) within it.
+
+  - **Function folder input**: The input function folder contains multiple r scripts where each of the r script is creating a pre-processed dataset by reading in the relevant variables and aggregated data according to the section that are interested directly from the database.
+
+  - **Data processing RMarkdown**: The first r markdown file is named data. processing. This r markdown is responsible to make  the pins created in the input folders as pins and share it on RSconnect server. A schedule update will also be set for the r markdown on RSconnect, this ensures that the downstream data analysis is always referring to the most updated data. 
+
+  - **Function output  folder** : Th output function folder contains multiple r scripts where each of the r scripts is creating a function that takes in pins and does data wrangling and also produce an output that can be called within the presentation in the final RMarkdown file. 
+
+  - **Render.RMardown**: This is the file all the functions that were previously stored within the output function folder are now called within the markdown to present the output.
+
+  - **Summary**: Essentially, the final output of the review should not change, however the structure is now changed with some modification of the codes in order to achieve a more optimisation of the report.
+
+Next, we will discuss the design of the new workflow known as the modular workflow is used with the new structure of the repository.
+
+
+**Design and construct a new workflow for the review** 
+
+In the original review, the workflow consists of 3 parts: 
+
+```{r orginal, fig.cap = "The original workflow of the Covid Epi Review "}
+knitr::include_graphics(here::here("pics/orgworkflow.jpeg"))
+```
+
+  - **Input**: Data is stored within The Victorian Department of Health database or used pins that were previously created by other individuals.
+  - **Transformation**: data transformation such as data reading, data wrangling as well as the final presentation of the output are all done within one markdown file 
+  - **Output**: The final report that is rendered from the Rmarkdown.
+
+Following the refactoring of the repository structure, a new workflow was deisgned and implemented to achieve the optimisation of the review. The new workflow targets each section of the report and consists of 5 parts.
+
+```{r new, fig.cap ="The modular workflow of the Covid Epi Review"}
+knitr::include_graphics(here::here("pics/modworkflow.jpeg"))
+```
+
+  - **input** : The input for the review are still data within the database or pins previously created by the other individuals 
+  - **Input function** : Select a section of the original report such as positive cases within Victoria . Create a new r script file in the input folder, within the r script, write function that read in relevant variables ,pre-process the dataset and return aggregated dataset . 
+  - **Pins** :In order to use the pre-process dataset created by the input functions in the previous stage. The dataset created by the input functions are then created as pins and stored with the boards of the RSconnect server. 
+  - **Output function**: The output function is created within separate r script files in the output folder within the function folder. The output function should generate a function utilises the pins that were previously created to conduct further data wrangling of the dataset and  create output such as tales and plot for the final report. 
+  - **Output** : To produce the final review, the previously created an output function is then called within Render.Rmd and produces  output for the review when rendered 
+
+
+### Benefits of the methodology
+By using this new workflow with the new the new repository structure, it allows for many benefits such as the following:
+
+•	**Modular workflow - Benefit 1 **
+
+First, this type of refactoring allows the original review of the report to maintain intact . Second, it allows the final review to be rendered faster as all the heaving lifting of the review such as the data, reading, data processing is completed within the R scripts within the input and output functions folder. Thirdly, by following this workflow and repository structure, it allows each section of the review to be completed independently following the new workflow, and therefor will not need to redeploy previous code when attempting to incorporate new sections within in the report. 
+
+•	**Create pins  - Benefit 2**
+
+For each section of the COVID-19 review , new pins are created. These pins like previously mentioned is a small, pre-processed dataset that is created for a specific section of the COVID-19 review. There are many benefits with adopting such an approach instead of directly reading from the database. First, the dataset  created are smaller, compared to reading directly from the database or using pins that are stored in RSconnect. Second, since the new pins are aggregated dataset, this indicatees the dataset used are pre-processed, this subsequently reduces the amount of data wrangling needed when writing the output function Hence allow operating with the output function to be faster. Second, when pins are created, the pins are stored within board. In this internship, the pins are pinned to virtual board RSconnect. When remote pins are read, it automatically cached the remote pins and as a local copy of the data is maintained, avoiding redeployment of the dataset . In addition, an update schedule can be set to the pin on RSconnect, this will update the pins and allow downstream data analytics to be using the most current dataset for the analysis. 
+
+•	**Create output functions - Benefit 3**
+
+There are many benefits in writing the output function fo each section of the COVID-19 reviews. By creating these output functions within the output folders , this allows the final r markdown to render much faster as the main data processing is done within the R script files. In addition, it reduces the line within the final R markdown hence helps render the file faster. Furthermore, also give user the flexibility to make add and takeout sections within the final review easier as there is less code within the R markdown and hence, easier to understand for user to use in the future and maintain over time. 
+
+# Data 
+
+All data used for the project are data collected and sourced by the Victorian Department of Health through contact tracing and management of the COVID-19 outbreak. 
+The data  are store within the sql database of the Victorian Department of Health. For the current project, each section of the COVID-19 review involves reading different tables within the database and using pins previously created by other team member with the department.
+
+(**Note: Please note that, as the data used for the current project is related to health, it is considered sensitive data  and therefore to protect the privacy of  Victorians, data used in the current project are not shared within the git repository**) 
+
+The following are the data used for each section of the COVID-19 review for the current project:
+
+- **Positive COVID-19 Cases**: As the original pins used for this section is relatively large and load slow, a new pin with aggregated dataset was generated and used for the section COVID-19 Cases. The new pin `epicases_linelist_read`  contains 5 variables  (Diagnosis Date, Ageonset, AgeGroup, Sex, n_cases) and 71,288 observations. Pin ` pop2020 ` created by  Craig Savage was also used, it contains 4 variables (postcode, gender,age_abs, population), and 120,056 observations
+
+
+- **Hospitalisation Cases** : The original pin used for this section of the review is fast, hence the original pins used in the original report is maintained. The pin is called `vicniss_daily_location_report` and is created by the Dennis Wollerheim. This pin contains 21 variables (TREVID, Patient_URNO, FacilityName,FacilityAdmissionDate, DailyLogDate, PatientSex, PatientDOB, CovidStatusOnAdmission, Covid19ConfirmedDate, DailyLogStatus, NameofMediHotel, Discharged, DischargeDate, TransferredToFacility, CovidAdmissionDate , lines_cleans, location DHHDFacilityID, LabelName, HealthService and 416127 observations.) . Pin `pop2020 ` created by  Craig Savage was also used, it contains 4 variables (postcode, gender ,age_abs, population), and 120,056 observations.  
+
+- **Emergency Department Cases**: As the original pins used for this section is relatively large , a new pin with aggregated dataset was generated and used for the section Emergency Department COVID-19 Cases. The new pin `epied_cases_read`  contains 6 variables  (Agegroup, admdate,tricat, adm_lastweek, adm_week, ytd ) and 5,152 observations. Pin `pop2020` created by  Craig Savage is again used, it contains 4 variables (postcode, gender,age_abs, population), and 120,056 observations
+
+- **Death Cases** : For this section three different pins were used (`epicases_linelist_read`, `epideath_case_read`, `epicase_fatality_read`) . In this section The `epicases_linelist_read` pin was used with 2 new pins. The pin `epideath_case_read`  is an  aggregated dataset used for the section Emergency Department  COVID-19 Cases. The new pin contains 5 variables  (Ageonset, Age group, DateofDeath,ClinicalStatus,n_death )and 3415 observations. The variables with in the second new pin `epicase_fatality_read` are the same  as "epideath_case_read” but with no aggregation and without the variable n_death,  there are total of 4 variables and 2,699,935 observations 
+
+
+- **COVID-19 Cases in children** : Data used for the COVID-19 cases in children are stored in with the new pins created `epicases_linelist_read`. This dataset contains 5 variables and 5 variables  (Diagnosis Date, Ageonset, AgeGroup, Sex, n_cases) and 71,288 observations. Pin `pop2020 ` created by  Craig Savage was again used, it contains 4 variables (postcode, gender ,age_abs, population), and 120,056 observations.
+
+- **Vaccination** : The original dataset used for the Vaccination is relatively big, hence a new pin was created with an aggregated dataset. The new `epi_vax_data_read`
+includes 6 variables (EncounterDate,  DoseNumber,Age,  VaxAgeGroup, AgeGroup,  n_vax) and 163,444 observations. Pin “pop2020”created by  Craig Savage was also used, it contains 4 variables (postcode, gender ,age_abs, population), and 120,056 observations.
+
+## Data Limitation:
+The data provided by the Victorian department of Health consist of only data that was reported to the Victorian department of Health, and thus, does not reflect on the entire COVID-19 cases in Victoria , as there could be many of COVID-19 cases that are not reported to the department.
+
+# Result:
+
+In this section, we will explore the output functions that are created in each section and compared the result of the original rendering speed of the original review with the rendering speed of the review following the use of work flow and the output function. 
+
+## Output Functions for each section: 
+
+**Postive Covid-19**: 
+
+Following the new workflow structure and  pins created,  for this section of the covid-19 review , output function *trevi_cases_time_graph()* and *trevi_case_table()* are created with some modification on the original code (by Ellie Robinson (intially by Craig Savagewith)) to adopt the new pin. 
+*The trevi_case_table()* function returns a summary table of the positive cases within Victoria. 
+
+*The trevi_cases_time_graph()* returns a plot where it visualises the daily covid-19 cases reported to the Department of Health, and produces a line plot that shows rolling average of the positive cases for the last 7 days. 
+
+The output function *trevi_cases_time_graph()* also allows users to change the rolling average of the positive cases for the days they intend by taking in the rolling average parameters as input for the function.  
+
+**Covid-19 Hospitalisation Cases** :
+
+Following the modular workflow structure and the new pins created for the section of the covid-19 Hospitalisation cases, output functions *Hosp_cases_table()* and *Hosp_plot()* are created.
+
+The *Hosp_cases_table()*  function returns a summary table of the all the covid-19 hospitalisation cases within Victoria for different age group from 2022 onwards and present the the daily averge of hospitlisation cases in victoria in this week and last week and shows the percentage increase.
+
+The *Hosp_plot()* function returns a plot where it visualises the total daily covid-19 hospitalisation cases reported to the Department of Health, in combination of a line plot that shows rolling average of the positive cases for the last 7 days. The output function *Hosp_plot()* also allows users to change the rolling average of the hospitalisation cases any period of time by taking in the rolling average  parameters as input for the function.  
+
+**Covid-19 Emergency Department Hospitalization Cases** :
+
+Following the new workflow structure and pins created for the section of the covid-19 emergency department hospitalisation cases, output functions *ED_Age_Table()*, *ED_Table_tricat()* and *ED_Plot()* are created.
+
+*ED_Age_Table()* function return a summary table for all the cases of Emergency department for all different age groups in Victoria. 
+
+*Ed_Table_tricat()* function returns a summary table of all the emergency department hospitalisation cases according to triage category. 
+
+Lastly, *ED_Plot()* function produce a plot that allows the emergency department cases to be visualised, again the function allows users to change the rolling average of the emergency department hospitalisation cases any period of time by taking in the rolling average parameters as input for the function.  
+
+**COVID-19 Death Cases** : 
+
+For this section two output functions *Death_table ()* and *Death_cases_plot()* were created 
+
+The *Death_table()* produces a summary table that display the death cases for the different age group within Victoria for the last 2 week and last week and as well and the percent increase.  
+
+The *Death_cases_plot()* produces a plot that examines and compares the trend of Death, positive cases, and case fatality rate. 
+
+**COVID-19 Cases in children**:
+For this section two output functions *children_table()* and *children_plot()*
+ were created.
+The *children_table()* function produces summary table of the covid-19 cases among children in Victoria, and consist of information regarding the total covid-19 for different child age group from January 1st 2022 onwards, covid-19 cases within this week, and last week, the percentage increases , thisWeekCaseper100k and ytdPer100k.
+
+The *children_plot ()* function allow users to return three different plots. The first plot is proportion of cases in child age group as a daily proportion of total reported cases. It also shows the 7 days average proportion for different age groups. 
+The second plot is the daily case rate(per 100,000 population) by child age group from January 1st 2022 onwards.
+
+The last plot is same as second plot, however only containing case diagnosed from term 3 (25th of June 2022)onwards. 
+
+The function takes 3 arguments plotname, daysbefore and daysafter. The first argument plot name indicates which plot is needed to be returned, and the second and third argument allow users to determine the timeframe used for calculating the rolling average cases. 
+
+**Vaccination**:
+In this section, two output functions were produced *Vax_plot()* and *Vax_Table()*.
+
+The *Vax_Table()* function returns a summary table of vaccination coverage rate for different doses of vaccination for different age group in Victoria, as well as showing the percentage increase for the vaccination rate in the last 30 days. 
+
+The *Vax_plot()* function produces a plot that visualises the vaccination coverage by dose number and age group. 
+
+
+
+## Rendering Speed:
+
+After creating the new input functions, pins and output functions for each section of the COVID-19 review, the output function is called with the render.rmd to renders the final report. 
+The original rendering time of the original review is about 25 minutes to half an hour to render. However, after the implementation of the modular workflow and new structure for each section of the report, there is an explicit decrease in rendering time as the with the current structure, the review renders in about 2-3 minutes. 
+This is largely due to the fact that, the major data wrangling are done when creating the input function and also output function. Second, data set used for each section are smaller in size as it uses data is aggregated when reading from the database, leading to a smaller dataset used for each section of the review . Lastly, with the use of pins, it allows the data to be retrieved fast with in’s ability to cache the data and pre-save the result instead of rerunning it again. 
+
+# Discussion:
+
+### Testing of the optimsation of Covid Epi Review   
+To test whether if the new workflow and change in structure can achieve the obeject of the project, several methods have been adopted to measure the efficiency of the current workflow and work structure. First, after creating each functions, the function running time are then measured by the system.time function.
+
+This function returns the execution time for any R expression, code, and function.  If there is an explicit decrease in the executing time of the function with the new function, the new function will be used , if the system. time appears to be longer than original code, then the original code within the covid-19 review is kept intact. 
+Second, in order to test to see whether the new workflow allows for faster rendering speed of the overview, each time when a section of the COVID-19 review is completed using the new workflow, the rendering speed of the review is recorded and compared to the original COVID-19 review. 
+
+
+### New skills learn from the work
+The primary objective of the internship was to optimise the original review through the use of the pins and restructuring of the of the repository and the modularised workflow . 
+In order to successfully complete the project and adopt the review into the modularised workflow there are many things that  are required to be learnt while completing the project. 
+
+First,  data regarding COVID-19 is stored within SQL database, hence in order to draw data and use in R, SQL was required to be learnt in combination with the use of  package `Maetools` which allows users to read data from the database to the R directly. 
+
+Second, in order to work with the dataset provided by the Victorian Department of Health,  SQL (Structure Query Language) and the use of software Azure data studio  needed to be learntto conduct pre-processing of the data in sql when creating the input functions.
+
+Thirdly, since many datasets used are pins previously created by other individuals and stored within RSconnect, it was required to learn and understand RSconnect server and  the package pins and how the functions within the package can be used to maximise optimation in the current review.   
+
+### Difficulties of the project 
+
+Apart from the skills that was learnt throughout the internship, there were many  obstacles and difficulties that were encountered while completing the tasks for the project.
+
+Firstly, the  primary goal of the project is to optimise a Rmarkdown interms of its running speed and rendering speed. With no background in the areas of optimisation, the task was difficult to approach at first. 
+
+Second, in order  to produce the same review as the original review with this new modular workflow. It was required to understand the code of the original review.
+
+The original review included much of Epidemiological information that was primarily used to evaluate the COVID-19 situation in Victoria , plan strategies to prevent the infectious disease within Victoria  and guide management of patients that have already developed the disease. Hence the code was difficult to understand and grasp as I do not obtain any epidemiological background. 
+
+Thirdly, other difficulty within when completing the task is accessing data and 
+that determining which table from which database should be used. As data within the Victorian Department of Health are sensitive data concerning public health, many of the data required permission before it was able to be accessed. Furthermore,  data could be stored in different database, hence when constructing input functions or for a section of COVID-19 review, it was difficult to navigate through the database to find the tables with the relevant variables that required to construct the aggregate dataset for the input function. 
+
+Lastly, the primary task was to optimise the rendering speed of the  original review. Hence, logically the rendering speed of the original review should be recorded and compared with the rendering speed of the new review , however the original markdown review could not be render. Hence, without the rendering speed of the original report it is difficult to measure the performance of the optimisation of the current project.  
+
+# Conclusion:
+
+To conclude, the result shows that owith the new work structure,it renders the COVID-19 review at a much faster speed (about 10 time faster) when compared to the original work structure. This is mainly due to the following 3 reasons:
+
+1.	Change in workflow and work structure.
+2.	Creating Pins targeted for each section for the review . 
+3.	Creating output functions for each section of the review . 
+
+ The result has illustrated that with  the new modularised workflow and work restructure , COVID-19 review can be refactored in such a way that the efficiency of the internal structure and rendering speed of the report is improved while keeping the original content of the review intact. 
+ 
+## Caveats:
+The fast rendering speed of the report could also be due to the fact that the current Covid-19 Epi Review using the modoularised workflow consists of less sections than the orignal review. (Due to time contrain, only section Covid-19 positive cases , hospitalisation cases, emergency department cases , death cases, covid-19 in children and vaccination are done)
+
+
+## Limitations:
+Some limitation to the new modularised approach is that, despite it is able to render the final review at a much faster speed, the modular approach of the review requires more effort from users to learn and udnerstadn the workflow when adding new sections to the COVID-19 Epi Review.
+
+## Challenges
+
+There were many challenges when completing the project, some challenges that have raised including, first design a new workflow that can optimise the rendering and efficiency of the report with no background in optimisation. 
+Other challenges also include learning the use of different packages and softwares such as RSconnect, pins, and Azure data Studio while completing the project. 
+
+# Future consideration 
+
+Firstly , to continue to optimise the running time as well as the rendering of the covid-19 review,  need to revise the current workflow and determine if any of the stages of the modular workflow can be done in parallel rather than in sequence. Second,  due to time contrain, section for cases in indigenous group and cases by SEIFA (Socio-Economic Indexes for Areas) quintile and cases among prisoner are not yet done. 
+Hence , to complete the project, these section must be compeleted inorder to measure the optimisation of the the final rendering speed of the completed covid-19 epi review. 
+
+
+
+# References:
+
+Australian Government Department of Health. (2020, January 25). First confirmed case of novel coronavirus in Australia. Australian Government Department of Health. https://www.health.gov.au/ministers/the-hon-greg-hunt-mp/media/first-confirmed-case-of-novel-coronavirus-in-australia
+
+
+Lotfi, M., Hamblin, M. R., & Rezaei, N. (2020). COVID-19: Transmission, prevention, and potential therapeutic opportunities. Clinica chimica acta, 508, 254-266
+
+Victorian COVID-19 data | Coronavirus Victoria. (2021). Vic.gov.au. https://www.coronavirus.vic.gov.au/victorian-coronavirus-covid-19-data
+
+World Health Organization. (2022). WHO COVID-19 dashboard. World Health Organization. https://covid19.who.int/
+
+Zhu, H., Wei, L., & Niu, P. (2020). The novel coronavirus outbreak in Wuhan, China. Global health research and policy, 5(1), 1-3.
+
+
