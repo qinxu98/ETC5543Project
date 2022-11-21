@@ -19,7 +19,7 @@ knitr::opts_chunk$set(echo = FALSE)
 
 The internship was completed with the Victoria Department of Health under the supervision of Jose Canevar and Dennis Wollerheim. 
 
-This internship aims to help design a novel workflow and refactor the structure of the current COVID-19 Epi Review (produced by Ellie Robinson, initially by Craige Savage)  to achieve optimisation in the efficiency of the R markdown that produces the review and rendering speed of the review 
+This internship aims to help design a novel workflow and refactor the structure of the current COVID-19 Epi Review (produced by Ellie Robinson, initially by Craige Savage)  to achieve optimisation in the efficiency of the R markdown that produces the review and rendering speed of the review.
 
 Data used for the project includes data collected by the Victorian Department of Health, stored within their SQL database and pins that are created by other members within the Victorian Department of Health.  The present report, explores and examines the deliverables of my work on the project optimisation of the COVID-19 EPI Review. 
 
@@ -199,6 +199,8 @@ In this section, we will explore the output functions that are created in each s
 
 ## Output Functions for each section: 
 
+(**NOTE: Please note the following output functions are recoded and updated base on code previously created by Ellie Robinson & Craig Savagewith**) 
+
 **Postive Covid-19**: 
 
 Following the new workflow structure and  pins created,  for this section of the covid-19 review , output function *trevi_cases_time_graph()* and *trevi_case_table()* are created with some modification on the original code (by Ellie Robinson (intially by Craig Savagewith)) to adopt the new pin. 
@@ -369,7 +371,7 @@ To conclude, the result shows that with the new work structure,it renders the CO
  The result has illustrated that with  the new modularised workflow and work restructure , COVID-19 review can be refactored in such a way that the efficiency of the internal structure and rendering speed of the report is improved while keeping the original content of the review intact. 
  
 ## Caveats:
-The fast rendering speed of the report could also be due to the fact that the current Covid-19 Epi Review using the modularised workflow consists of less sections than the orignal review. (Due to time contrain, only section Covid-19 positive cases , hospitalisation cases, emergency department cases , death cases, covid-19 in children and vaccination are done)
+The fast rendering speed of the report could also be due to the fact that the current Covid-19 Epi Review  using the modularised workflow consists of less sections than the orignal review. (Due to time contrain, only section Covid-19 positive cases , hospitalisation cases, emergency department cases , death cases, covid-19 in children and vaccination are done)
 
 
 ## Limitations:
