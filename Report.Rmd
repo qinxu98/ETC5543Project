@@ -1,6 +1,6 @@
 ---
 title: "ETC5543 Report - The Optimisation of COVID-19 EPI Review  "
-author: "Qin Xu, Student ID: 32343612 , Supercvisor: Jose Canevar and Dennis Wollerheim  "
+author: "Qin Xu, Student ID: 32343612 , Supervisor: Jose Canevar and Dennis Wollerheim  "
 date: "2022-10-27"
 output:
   bookdown::html_document2:
@@ -341,7 +341,7 @@ In order to successfully complete the project and adopt the review into the modu
 
 First,  data regarding COVID-19 is stored within SQL database, hence in order to draw data and use in R, SQL was required to be learnt in combination with the use of  package `Maetools` which allows users to read data from the database to the R directly. 
 
-Second, in order to work with the dataset provided by the Victorian Department of Health,  SQL (Structure Query Language) and the use of software Azure data studio  needed to be learntto conduct pre-processing of the data in sql when creating the input functions.
+Second, in order to work with the dataset provided by the Victorian Department of Health,  SQL (Structure Query Language) and the use of software Azure data studio  needed to be learnt to conduct pre-processing of the data in sql when creating the input functions.
 
 Thirdly, since many datasets used are pins previously created by other individuals and stored within RSconnect, it was required to learn and understand RSconnect server and  the package pins and how the functions within the package can be used to maximise optimation in the current review.   
 
@@ -385,7 +385,7 @@ Other challenges also include learning the use of different packages and softwar
 # Future consideration 
 
 Firstly , to continue to optimise the running time as well as the rendering of the covid-19 review,  need to revise the current workflow and determine if any of the stages of the modular workflow can be done in parallel rather than in sequence. Second,  due to time contrain, section for cases in indigenous group and cases by SEIFA (Socio-Economic Indexes for Areas) quintile and cases among prisoner are not yet done. 
-Hence , to complete the project, these section must be compeleted inorder to measure the optimisation of the the final rendering speed of the completed covid-19 epi review. 
+Hence , to complete the project, these section must be compeleted in order to measure the optimisation of the the final rendering speed of the completed covid-19 epi review. 
 
 
 
